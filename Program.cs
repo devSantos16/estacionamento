@@ -28,6 +28,7 @@ internal class Program
             Console.WriteLine("Opção 4: Mostrar o registro");
             Console.WriteLine("Digite a opção: ");
 
+
             opcao = Convert.ToInt32(Console.ReadLine());
             switch (opcao)
             {
@@ -65,22 +66,23 @@ internal class Program
                     Console.WriteLine("Digite a placa: ");
                     placaPesquisa = Console.ReadLine();
 
-                    foreach (var items in listaVeiculo)
+                    for (int i = 0; i < listaVeiculo.Count; i++)
                     {
-                        // Tem que arrumar isso
-                        if (items.placa == placaPesquisa)
+                        if (listaVeiculo[i].placa == placaPesquisa)
                         {
+                            string backupVeiculo = listaVeiculo[i].placa;
                             Console.WriteLine("Informe o numero de horas que o veiculo ficou");
-                            items.quantidadeHoras = Convert.ToDouble(Console.ReadLine());
-                            items.tratarVeiculoRetirado(estacionamento);
-                            registroVeiculo.AdicionarVeiculo(items);
-                            listaVeiculo.Remove(items);
-                            Console.WriteLine($"Veiculo com a placa {items.placa} retirado com sucesso");
+                            listaVeiculo[i].quantidadeHoras = Convert.ToDouble(Console.ReadLine());
+                            listaVeiculo[i].tratarVeiculoRetirado(estacionamento);
+                            registroVeiculo.AdicionarVeiculo(listaVeiculo[i]);
+                            listaVeiculo.Remove(listaVeiculo[i]);
+                            Console.WriteLine($"Veiculo com a placa {backupVeiculo} retirado com sucesso");
                         }
                         else
                         {
                             Console.WriteLine("Não existe veiculo com esta placa");
                         }
+
                     }
                     break;
                 case 4:

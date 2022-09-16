@@ -8,13 +8,16 @@ namespace estacionamento.Models
     public class RegistroVeiculo
     {
         private List<Veiculo> listaVeiculo { get; set; }
-        public RegistroVeiculo()
-        {
-            this.listaVeiculo = null;
-        }
+
+        public RegistroVeiculo() { }
 
         public void AdicionarVeiculo(Veiculo veiculo)
         {
+            if (this.listaVeiculo == null)
+            {
+                this.listaVeiculo = new List<Veiculo>();
+            }
+            
             this.listaVeiculo.Add(veiculo);
         }
 
