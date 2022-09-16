@@ -20,15 +20,14 @@ namespace estacionamento.Models
             this.precoEstacionamento = estacionamento.precoInicial + estacionamento.precoHora;
         }
 
-        public void retirarVeiculo(Estacionamento estacionamento)
+        /// <summary>
+        /// Trata toda a situação do veiculo antes de remover na lista
+        /// </summary>
+        /// <param name="estacionamento"></param>
+        public void tratarVeiculoRetirado(Estacionamento estacionamento)
         {
             this.situacao = "Retirado";
             this.precoEstacionamento = (this.quantidadeHoras * estacionamento.precoInicial) + estacionamento.precoHora;
         }
-
-        
-
-
-
     }
 }
